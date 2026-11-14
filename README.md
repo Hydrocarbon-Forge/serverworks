@@ -8,10 +8,10 @@ A Fabric mod for Minecraft 26.3 · every major server platform · all art genera
 
 <!-- badges:start -->
 <p align="center">
-<a href="https://github.com/Atomiceatscode/serverworks/actions/workflows/ci.yml"><img alt="CI: build + 93 tests" src="https://img.shields.io/badge/CI-build_+_93_tests-success"></a>
+<a href="https://github.com/Hydrocarbon-Forge/serverworks/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Hydrocarbon-Forge/serverworks/actions/workflows/ci.yml/badge.svg"></a>
 <img alt="unit tests: 93/93 passing" src="https://img.shields.io/badge/unit_tests-93/93_passing-brightgreen">
 <img alt="game tests: 9 walkthroughs" src="https://img.shields.io/badge/game_tests-9_walkthroughs-brightgreen">
-<a href="https://github.com/Atomiceatscode/serverworks/blob/main/LICENSE"><img alt="license: MIT" src="https://img.shields.io/badge/license-MIT-blue"></a>
+<a href="https://github.com/Hydrocarbon-Forge/serverworks/blob/main/LICENSE"><img alt="license: MIT" src="https://img.shields.io/badge/license-MIT-blue"></a>
 </p>
 <p align="center">
 <img alt="Minecraft: 26.3" src="https://img.shields.io/badge/Minecraft-26.3-62B47A">
@@ -39,7 +39,6 @@ A Fabric mod for Minecraft 26.3 · every major server platform · all art genera
 <img alt="lines of code: 20,099" src="https://img.shields.io/badge/lines_of_code-20,099-informational">
 <img alt="Java files: 183" src="https://img.shields.io/badge/Java_files-183-informational">
 <img alt="jar size: 1,440 KB" src="https://img.shields.io/badge/jar_size-1,440_KB-informational">
-<img alt="commits: 12" src="https://img.shields.io/badge/commits-12-informational">
 <img alt="version: 1.2.1" src="https://img.shields.io/badge/version-1.2.1-informational">
 </p>
 <!-- badges:end -->
@@ -54,11 +53,10 @@ A Fabric mod for Minecraft 26.3 · every major server platform · all art genera
 <a href="#building-and-testing">Building</a>
 </p>
 
-| | |
-|---|---|
-| ![A running rack](docs/screenshots/gateway_open.png) | ![The Disk Writer](docs/screenshots/disk_writer_screen.png) |
-| ![The Server Core](docs/screenshots/server_running.png) | ![The live console](docs/screenshots/server_console.png) |
-| ![The Showcase world](docs/screenshots/showcase_world.png) | ![Recipes in the Operator's Manual](docs/screenshots/manual_recipes.png) |
+<p align="center">
+<img src="docs/screenshots/gateway_open.png" alt="A formed rack in the world, with the Server Core running" width="720"><br>
+<sub>A formed rack in the world, with the Server Core running and its status panel showing 0/40 players at localhost:25600.</sub>
+</p>
 
 Powered by the [Modrinth API](https://docs.modrinth.com/). Serverworks is not affiliated
 with or endorsed by Modrinth.
@@ -87,8 +85,9 @@ with or endorsed by Modrinth.
   one of your singleplayer worlds. Swap drives to switch worlds.
 - **Backups.** Back a rack's world up from the Server Core, even while it runs, restore
   any copy, or turn on automatic backups.
-- **Redstone.** A comparator reads how full a rack's server is, and a redstone signal can
-  start and stop it.
+- **Redstone.** A comparator reads how full a rack's server is. A redstone signal can
+  start and stop it, but only after an operator turns redstone control on in the Server
+  Core; it is off by default.
 - **Walk in.** Use the Gateway and the game saves your world and joins the rack's server.
   Press B (or "Return to …" in the pause menu) to go back. On a dedicated server players
   travel through the server's own port, so racks need no ports opened. Status Displays
@@ -98,15 +97,23 @@ with or endorsed by Modrinth.
   other racks, linked with Link Cards.
 - **Feels like a machine.** Fans spin, lights blink, the rack hums, chimes when it comes
   up and sounds an alarm if it crashes. The Operator's Manual explains everything and
-  draws every crafting grid, and an advancement tab runs from your first disk to a
-  netherite rack.
+  draws every crafting grid. An advancement tab runs from your first disk to a netherite
+  rack, and each recipe unlocks its own advancement.
 - **A guided tour.** Turn on "Serverworks Showcase" on the Create World screen for a
   creative world with every block laid out and four example racks ready to start.
 
 | | |
 |---|---|
+| ![The Rack Wrench previewing a rack build](docs/screenshots/wrench_preview.png)<br><sub>The Rack Wrench previews a rack build and reports when it is too small, which must be at least 3 blocks along every side.</sub> | ![A formed Paper rack with its disks and Start Server button](docs/screenshots/server_core_screen.png)<br><sub>A formed Paper rack lists its loaded disks (5 of 16, with 2 that will not run on this platform) and a Start Server button.</sub> |
+| ![The Disk Writer searching Modrinth](docs/screenshots/disk_writer_screen.png)<br><sub>The Disk Writer searches Modrinth (here "lithium", 35 results) and shows the target disk as ready to write.</sub> | ![A running Diamond-frame rack](docs/screenshots/server_running.png)<br><sub>A running Diamond-frame rack shows its join address (localhost:25600), 2 of 8 disks loaded, and a Stop Server button.</sub> |
+| ![The live console](docs/screenshots/server_console.png)<br><sub>The Console tab streams the server log, here after a `plugins` command listing the Paper and Bukkit plugins.</sub> | ![The Config Card](docs/screenshots/config_card.png)<br><sub>The Config Card sets difficulty, game mode, PvP, view and simulation distance, spawn protection and the MOTD.</sub> |
+| ![The Backups tab on the Server Core](docs/screenshots/backups.png)<br><sub>The Backups tab lists saved snapshots with size and a Restore button, alongside a Back Up Now button.</sub> | |
+
+| | |
+|---|---|
 | ![The Showcase switch on Create World](docs/screenshots/showcase_switch.png) | ![Platform Module recipes](docs/screenshots/manual_modules.png) |
-| ![Updates for a rack's disks](docs/screenshots/disk_updates.png) | ![Backups on the Server Core](docs/screenshots/backups.png) |
+| ![Updates for a rack's disks](docs/screenshots/disk_updates.png) | ![Recipes in the Operator's Manual](docs/screenshots/manual_recipes.png) |
+| ![The Showcase world](docs/screenshots/showcase_world.png) | |
 
 ## Requirements
 
@@ -123,7 +130,7 @@ with or endorsed by Modrinth.
 ## Install
 
 1. Install [Fabric Loader](https://fabricmc.net/use/) 0.20.1 or newer for Minecraft 26.3.
-2. Download `serverworks-1.2.1.jar` from [Releases](https://github.com/Atomiceatscode/serverworks/releases)
+2. Download `serverworks-1.2.1.jar` from [Releases](https://github.com/Hydrocarbon-Forge/serverworks/releases)
    and put it in your `mods` folder, with [Fabric API](https://modrinth.com/mod/fabric-api) for 26.3.
 3. Start the game. To look around first, create a world with **Serverworks Showcase** on.
 
@@ -350,7 +357,6 @@ The badges and stats in this README come from:
 | Art | 221 textures and 10 sounds, all generated by the scripts in `art/` |
 | Lines of code | **20,099** across 183 Java and 7 Python files |
 | Release jar | 1,440 KB |
-| Commits | 12 |
 
 | Module | Non-blank lines | Share |
 |---|---|---|
@@ -371,9 +377,12 @@ The badges and stats in this README come from:
 | `src/main/java/dev/serverworks/catalog/` | Modrinth client. No Minecraft classes. |
 | `src/main/java/dev/serverworks/rack/` | Rack rules, platforms, preview. No Minecraft classes. |
 | `src/main/java/dev/serverworks/host/` | Downloading, installing and running servers. |
+| `src/main/java/dev/serverworks/relay/` | One-port relay for dedicated servers. |
 | `src/main/java/dev/serverworks/{item,machine,net,registry}/` | Items, blocks, menus, packets. |
+| `src/main/java/dev/serverworks/mixin/`, `.../compat/` | Server-side mixins; Jade data. |
 | `src/main/java/dev/serverworks/showcase/` | The Showcase tour. |
-| `src/client/` | Screens, rendering, icons, sounds, trips, Mod Menu and Jade integration. |
+| `src/main/java/dev/serverworks/` (root) | The mod entrypoint, config, advancements, client hooks. |
+| `src/client/` | Screens, rendering, icons, sounds, trips, Mod Menu, Jade, JEI and REI integration. |
 | `src/test/`, `src/gametest/` | Unit tests and in-game walkthroughs. |
 | `art/` | Generators for every texture, sound and JSON resource. |
 | `scripts/stats.py` | Refreshes this README's badges and stats. |
